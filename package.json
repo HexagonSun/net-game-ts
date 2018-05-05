@@ -1,0 +1,15 @@
+{
+  "name": "net-game-html",
+  "version": "0.1.0",
+  "description": "A pure TypeScript remake of Thatham's \"net\" game",
+  "author": "Hexagon Sun",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HexagonSun/net-game-ts"
+  },
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "2.8.3"
+  }
+}
