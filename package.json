@@ -7,9 +7,19 @@
     "type": "git",
     "url": "https://github.com/HexagonSun/net-game-ts"
   },
-  "scripts": {},
+  "scripts": {
+    "start": "npm run serve",
+    "build": "npm run build-ts && npm run tslint && npm run copy-static",
+    "serve": "node dist/server.js",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "tslint": "tslint --project tsconfig.json --format stylish",
+    "copy-static": "copyfiles --up 2 src/resources/* dist"
+  },
   "dependencies": {},
   "devDependencies": {
+    "copyfiles": "2.0.0",
+    "tslint": "5.10.0",
     "typescript": "2.8.3"
   }
 }
