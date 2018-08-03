@@ -15,7 +15,7 @@ class NetGame {
     }
 
     /**
-     * bootstrap game.
+     * Bootstrap game.
      */
     public init(): void {
         this.console.log("Initializing NetGame");
@@ -24,7 +24,9 @@ class NetGame {
 
     private buildBoard(): void {
         const board: HTMLElement = this.getBoard();
-        this.console.log("got board: ", board);
+        const boardSize: number = 10;
+        const boardModel: Board = new Board(boardSize);
+        this.console.log("board model:", boardModel);
     }
 
     private getBoard(): HTMLElement {

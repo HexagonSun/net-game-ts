@@ -3,6 +3,10 @@
   "rules": {
     "no-console": false,
     "member-ordering": false,
-    "completed-docs": false
+    "completed-docs": false,
+    "no-unused-variable": false,
+    "max-classes-per-file": false,
+    "array-type": [true, "generic"],
+    "no-inferrable-types": false
   }
 }
