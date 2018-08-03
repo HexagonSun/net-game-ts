@@ -1,3 +1,8 @@
 {
-  "extends": "tslint:all"
+  "extends": "tslint:all",
+  "rules": {
+    "no-console": false,
+    "member-ordering": false,
+    "completed-docs": false
+  }
 }
