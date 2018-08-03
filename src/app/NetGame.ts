@@ -19,14 +19,23 @@ class NetGame {
      */
     public init(): void {
         this.console.log("Initializing NetGame");
-        this.buildBoard();
+        const board: Board = this.buildBoard();
+        const renderer: Renderer = this.createRenderer();
+        renderer.render(board);
     }
 
-    private buildBoard(): void {
-        const board: HTMLElement = this.getBoard();
+    private buildBoard(): Board {
         const boardSize: number = 10;
         const boardModel: Board = new Board(boardSize);
         this.console.log("board model:", boardModel);
+
+        return boardModel;
+    }
+
+    private createRenderer(): Renderer {
+        const board: HTMLElement = this.getBoard();
+
+        return new Renderer(board);
     }
 
     private getBoard(): HTMLElement {
