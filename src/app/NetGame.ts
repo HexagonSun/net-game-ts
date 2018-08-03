@@ -15,7 +15,7 @@ class NetGame {
     }
 
     /**
-     * Bootstrap game.
+     * Bootstrap game
      */
     public init(): void {
         this.console.log("Initializing NetGame");
