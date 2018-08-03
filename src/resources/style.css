@@ -14,3 +14,16 @@ body {
 .rot90 { transform: rotate(90deg); }
 .rot180 { transform: rotate(180deg); }
 .rot270 { transform: rotate(270deg); }
+
+footer {
+    width: 100%;
+    margin-top: 3rem;
+}
+
+.action {
+    padding: .5rem;
+    border-radius: 5px;
+    background-color: aliceblue;
+    width: 10rem;
+    text-align: center;
+}

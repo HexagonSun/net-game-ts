@@ -12,7 +12,7 @@ class Renderer {
 
     private checkInitialization(model: Board): void {
         if (this.board.childElementCount > 0) {
-            return;
+            this.clear(this.board);
         }
 
         const boardFragment: DocumentFragment = document.createDocumentFragment();
@@ -25,6 +25,10 @@ class Renderer {
         }
 
         this.board.appendChild(boardFragment);
+    }
+
+    private readonly clear = (element: HTMLElement): void => {
+        element.innerHTML = "";
     }
 
     private createTile(tileModel: Tile): HTMLElement {

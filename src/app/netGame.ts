@@ -8,6 +8,8 @@ class NetGame {
     private readonly document: Document;
     private readonly console: Console;
 
+    private renderer: Renderer;
+
     public constructor(document: Document,
                        console: Console) {
         this.document = document;
@@ -19,8 +21,14 @@ class NetGame {
      */
     public init(): void {
         this.console.log("Initializing NetGame");
+        this.renderer = this.createRenderer();
+        this.reset(this.renderer);
+
+        this.registerHandlers();
+    }
+
+    private reset(renderer: Renderer): void {
         const board: Board = this.buildBoard();
-        const renderer: Renderer = this.createRenderer();
         renderer.render(board);
     }
 
@@ -38,7 +46,19 @@ class NetGame {
         return new Renderer(board);
     }
 
+    private registerHandlers(): void {
+        const button: HTMLElement = this.ge("generate");
+        button.addEventListener("click", () => {
+            console.log("Generate clicked!");
+            this.reset(this.renderer);
+        });
+    }
+
     private getBoard(): HTMLElement {
-        return this.document.getElementById(NetGame.BOARD_ID);
+        return this.ge(NetGame.BOARD_ID);
+    }
+
+    private ge(id: string): HTMLElement {
+        return this.document.getElementById(id);
     }
 }
