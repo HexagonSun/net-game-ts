@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "dist",
+        "outFile": "dist/net-game-app.js",
         "sourceMap": true
     },
     "include": [
