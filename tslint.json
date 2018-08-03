@@ -7,6 +7,7 @@
     "no-unused-variable": false,
     "max-classes-per-file": false,
     "array-type": [true, "generic"],
-    "no-inferrable-types": false
+    "no-inferrable-types": false,
+    "no-unnecessary-class": false
   }
 }

@@ -26,7 +26,7 @@ class NetGame {
 
     private buildBoard(): Board {
         const boardSize: number = 10;
-        const boardModel: Board = new Board(boardSize);
+        const boardModel: Board = DebugGenerator.createRandomBoard(boardSize);
         this.console.log("board model:", boardModel);
 
         return boardModel;
