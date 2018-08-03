@@ -29,11 +29,12 @@ class Renderer {
 
     private createTile(tileModel: Tile): HTMLElement {
         const tile: HTMLElement = document.createElement("div");
-
         tile.className = "tile";
-        tile.innerText = this.getText(tileModel);
 
-        console.log(this.board.childElementCount);
+        const svg: HTMLElement = document.createElement("img");
+        svg.setAttribute("src", this.getIconName(tileModel));
+        svg.className = this.getRotationClassName(tileModel);
+        tile.appendChild(svg);
 
         return tile;
     }
@@ -45,13 +46,24 @@ class Renderer {
         return row;
     }
 
-    private readonly getText = (tileModel: Tile): string => {
+    private readonly getIconName = (tileModel: Tile): string => {
         switch (tileModel.shape) {
-            case Shape.PIPE: return "|";
-            case Shape.T: return "T";
+            case Shape.PIPE: return "pipe_inactive.svg";
+            case Shape.T: return "t_inactive.svg";
             case Shape.CORNER:
             default:
-                return "L" ;
+                return "corner_inactive.svg" ;
         }
     }
+
+    private readonly getRotationClassName = (tileModel: Tile): string => {
+        switch (tileModel.rotation) {
+            default:
+            case Rotation.NORTH: return "rot0";
+            case Rotation.EAST: return "rot90";
+            case Rotation.SOUTH: return "rot180";
+            case Rotation.WEST: return "rot270";
+        }
+    }
+
 }

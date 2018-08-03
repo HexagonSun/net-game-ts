@@ -31,7 +31,7 @@ class Board {
             const row: Array<Tile> = [];
             for (let j: number = 0; j < size; j++) {
 
-                row.push(new Tile(this.getRandomShape(), Rotation.NORTH));
+                row.push(new Tile(this.getRandomShape(), this.getRandomRotation()));
             }
             rows.push(row);
         }
@@ -40,9 +40,14 @@ class Board {
         this.width = rows[0].length;
     }
 
-    private readonly getRandomShape = (): Shape => {
+    private readonly getRandomShape = (): Shape => this.getRandom(Shape);
+
+    private readonly getRandomRotation = (): Rotation => this.getRandom(Rotation);
+
+    private readonly getRandom = <T extends {}>(enumDefinition: T): number => {
         const half: number = 2;
 
-        return Math.floor(Math.random() * Object.keys(Shape).length / half);
+        return Math.floor(Math.random() * Object.keys(enumDefinition).length / half);
     }
+
 }
