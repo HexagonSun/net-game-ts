@@ -16,6 +16,14 @@ class Tile {
         this.rotation = rotation;
     }
 
+    public rotated(clockwise: boolean = true): Tile {
+        const delta: number = clockwise ? 1 : -1;
+        const idx: number = (this.rotation + delta) % EnumUtils.size(Rotation);
+        const next: string = Rotation[idx];
+
+        return new Tile(this.shape, Rotation[next] as Rotation);
+    }
+
 }
 
 class Board {
@@ -33,4 +41,7 @@ class Board {
         this.width = rows[0].length;
     }
 
+    public rotate(x: number, y: number, clockwise: boolean): void {
+        this.board[x][y] = this.board[x][y].rotated(clockwise);
+    }
 }

@@ -14,14 +14,8 @@ class DebugGenerator {
         return new Board(rows);
     }
 
-    private static readonly getRandomShape = (): Shape => DebugGenerator.getRandom(Shape);
+    private static readonly getRandomShape = (): Shape => EnumUtils.getRandom(Shape);
 
-    private static readonly getRandomRotation = (): Rotation => DebugGenerator.getRandom(Rotation);
-
-    private static readonly getRandom = <T extends {}>(enumDefinition: T): number => {
-        const half: number = 2;
-
-        return Math.floor(Math.random() * Object.keys(enumDefinition).length / half);
-    }
+    private static readonly getRandomRotation = (): Rotation => EnumUtils.getRandom(Rotation);
 
 }

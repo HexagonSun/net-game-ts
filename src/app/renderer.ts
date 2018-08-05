@@ -19,7 +19,7 @@ class Renderer {
         for (let i: number = 0; i < model.height; i++) {
             const row: HTMLElement = this.createRow();
             for (let j: number = 0; j < model.width; j++) {
-                row.appendChild(this.createTile(model.board[i][j]));
+                row.appendChild(this.createTile(model, i, j));
             }
             boardFragment.appendChild(row);
         }
@@ -31,9 +31,12 @@ class Renderer {
         element.innerHTML = "";
     }
 
-    private createTile(tileModel: Tile): HTMLElement {
+    private createTile(model: Board, x: number, y: number): HTMLElement {
+        const tileModel: Tile = model.board[x][y];
         const tile: HTMLElement = document.createElement("div");
         tile.className = "tile";
+        tile.setAttribute("data-x", `${x}`);
+        tile.setAttribute("data-y", `${y}`);
 
         const svg: HTMLElement = document.createElement("img");
         svg.setAttribute("src", this.getIconName(tileModel));

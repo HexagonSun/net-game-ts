@@ -9,6 +9,8 @@ class NetGame {
     private readonly console: Console;
 
     private renderer: Renderer;
+    private events: Events;
+    private board: Board;
 
     public constructor(document: Document,
                        console: Console) {
@@ -22,14 +24,17 @@ class NetGame {
     public init(): void {
         this.console.log("Initializing NetGame");
         this.renderer = this.createRenderer();
-        this.reset(this.renderer);
+        this.events = new Events();
+
+        this.reset(this.renderer, this.events);
 
         this.registerHandlers();
     }
 
-    private reset(renderer: Renderer): void {
-        const board: Board = this.buildBoard();
-        renderer.render(board);
+    private reset(renderer: Renderer, events: Events): void {
+        this.board = this.buildBoard();
+        renderer.render(this.board);
+        events.setBoard(this.board);
     }
 
     private buildBoard(): Board {
@@ -47,10 +52,29 @@ class NetGame {
     }
 
     private registerHandlers(): void {
+        this.registerBoardHandlers();
+        this.registerFooterHandlers();
+    }
+
+    private readonly registerBoardHandlers = (): void => {
+        const board: HTMLElement = this.getBoard();
+        board.addEventListener("click", this.boardClick, false);
+    }
+
+    private readonly boardClick = (event: Event): void => {
+        this.events.handleBoardClick(event);
+        this.renderer.render(this.board);
+    }
+
+    private readonly registerFooterHandlers = (): void => {
+        this.registerGenerate();
+    }
+
+    private registerGenerate(): void {
         const button: HTMLElement = this.ge("generate");
         button.addEventListener("click", () => {
-            console.log("Generate clicked!");
-            this.reset(this.renderer);
+            this.console.log("Generate clicked!");
+            this.reset(this.renderer, this.events);
         });
     }
 
