@@ -1,6 +1,12 @@
-enum Shape {
+enum RotateableShape {
     PIPE, T, CORNER,
 }
+
+enum SystemShape {
+    PIPE, T, CORNER, SOURCE,
+}
+
+type Shape = RotateableShape | SystemShape;
 
 enum Rotation {
     NORTH, EAST, SOUTH, WEST,
@@ -10,6 +16,8 @@ class Tile {
 
     public readonly shape: Shape;
     public readonly rotation: Rotation;
+
+    public connected: boolean = false;
 
     public constructor(shape: Shape, rotation: Rotation) {
         this.shape = shape;
@@ -23,6 +31,17 @@ class Tile {
 
         return new Tile(this.shape, Rotation[next] as Rotation);
     }
+
+}
+
+class Source extends Tile {
+
+    public constructor() {
+        super(SystemShape.SOURCE, Rotation.NORTH);
+        this.connected = true;
+    }
+
+    public rotated = (clockwise: boolean = true): Tile => new Source();
 
 }
 
