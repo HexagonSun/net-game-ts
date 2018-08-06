@@ -11,10 +11,10 @@ class DebugGenerator {
             rows.push(row);
         }
 
-        this.addSource(rows, size);
+        const source: Source = this.addSource(rows, size);
         this.linkNeighbours(rows);
 
-        return new Board(rows);
+        return new Board(rows, source);
     }
 
     private static readonly getRandomShape = (): Shape => EnumUtils.getRandom(RotateableShape);

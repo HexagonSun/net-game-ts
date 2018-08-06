@@ -39,6 +39,7 @@ class Tile {
     public setNeighbours(neighbours: Neighbours): void {
         this.neighbours = neighbours;
     }
+
 }
 
 class Source extends Tile {
@@ -62,13 +63,16 @@ class Board {
     public readonly width: number;
     public readonly board: Array<Array<Tile>>;
 
-    public constructor(rows: Array<Array<Tile>> = []) {
+    private source: Source;
+
+    public constructor(rows: Array<Array<Tile>> = [], source: Source) {
         if (rows.length === 0 || rows[0].length === 0) {
             throw new Error("Invalid board dimensions");
         }
         this.board = rows;
         this.height = rows.length;
         this.width = rows[0].length;
+        this.source = source;
     }
 
     public rotate(x: number, y: number, clockwise: boolean): void {
