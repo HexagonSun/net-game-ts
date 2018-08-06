@@ -19,8 +19,8 @@ class Tile {
     public readonly shape: Shape;
     public readonly rotation: Rotation;
 
-    public connected: boolean = false;
-    private neighbours: Neighbours;
+    public active: boolean = false;
+    public neighbours: Neighbours;
 
     public constructor(shape: Shape, rotation: Rotation, neighbours?: Neighbours) {
         this.shape = shape;
@@ -46,7 +46,7 @@ class Source extends Tile {
 
     public constructor(shape: Shape, rotation: Rotation, neighbours?: Neighbours) {
         super(shape, rotation, neighbours);
-        this.connected = true;
+        this.active = true;
     }
 
     public rotated = (clockwise: boolean = true): Source => {

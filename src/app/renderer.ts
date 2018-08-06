@@ -54,7 +54,7 @@ class Renderer {
     }
 
     private readonly getIconName = (tileModel: Tile): string => {
-        const type: string = `${tileModel.connected ? "" : "in"}active.svg`;
+        const type: string = `${tileModel.active ? "" : "in"}active.svg`;
         switch (tileModel.shape) {
             case RotateableShape.PIPE: return `pipe_${type}`;
             case RotateableShape.T: return `t_${type}`;
