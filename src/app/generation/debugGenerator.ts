@@ -21,10 +21,12 @@ class DebugGenerator {
 
     private static readonly getRandomRotation = (): Rotation => EnumUtils.getRandom(Rotation);
 
-    private static addSource(rows: Array<Array<Tile>>, size: number): void {
+    private static addSource(rows: Array<Array<Tile>>, size: number): Source {
         const x: number = Math.floor(Math.random() * size);
         const y: number = Math.floor(Math.random() * size);
-        rows[x][y] = new Source();
+        rows[x][y] = new Source(SystemShape.SOURCE_SINGLE, this.getRandomRotation());
+
+        return rows[x][y];
     }
 
     private static linkNeighbours(rows: Array<Array<Tile>>): void {

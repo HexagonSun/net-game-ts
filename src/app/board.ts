@@ -43,12 +43,16 @@ class Tile {
 
 class Source extends Tile {
 
-    public constructor() {
-        super(SystemShape.SOURCE_SINGLE, Rotation.NORTH);
+    public constructor(shape: Shape, rotation: Rotation, neighbours?: Neighbours) {
+        super(shape, rotation, neighbours);
         this.connected = true;
     }
 
-    public rotated = (clockwise: boolean = true): Tile => new Source();
+    public rotated = (clockwise: boolean = true): Source => {
+        const rotatedTile = super.rotated(clockwise);
+
+        return new Source(rotatedTile.shape, rotatedTile.rotation, rotatedTile.neighbours);
+    }
 
 }
 
