@@ -58,7 +58,10 @@ class Renderer {
         switch (tileModel.shape) {
             case RotateableShape.PIPE: return `pipe_${type}`;
             case RotateableShape.T: return `t_${type}`;
-            case SystemShape.SOURCE: return `source_${type}`;
+            case SystemShape.SOURCE_SINGLE: return `source_single_${type}`;
+            case SystemShape.SOURCE_PIPE: return `source_pipe_${type}`;
+            case SystemShape.SOURCE_T: return `source_t_${type}`;
+            case SystemShape.SOURCE_CORNER: return `source_corner_${type}`;
             case RotateableShape.CORNER:
             default:
                 return `corner_${type}`;

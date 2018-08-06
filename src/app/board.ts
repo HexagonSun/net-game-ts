@@ -3,7 +3,9 @@ enum RotateableShape {
 }
 
 enum SystemShape {
-    PIPE, T, CORNER, SOURCE,
+    // The first three are given so that they overlap the definition/indexes of "RotateableShape"
+    PIPE, T, CORNER,
+    SOURCE_SINGLE, SOURCE_PIPE, SOURCE_T, SOURCE_CORNER,
 }
 
 type Shape = RotateableShape | SystemShape;
@@ -41,7 +43,7 @@ class Tile {
 class Source extends Tile {
 
     public constructor() {
-        super(SystemShape.SOURCE, Rotation.NORTH);
+        super(SystemShape.SOURCE_SINGLE, Rotation.NORTH);
         this.connected = true;
     }
 
