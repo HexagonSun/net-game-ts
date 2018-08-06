@@ -18,6 +18,7 @@ class Tile {
     public readonly rotation: Rotation;
 
     public connected: boolean = false;
+    private neighbours: Neighbours;
 
     public constructor(shape: Shape, rotation: Rotation) {
         this.shape = shape;
@@ -32,6 +33,9 @@ class Tile {
         return new Tile(this.shape, Rotation[next] as Rotation);
     }
 
+    public setNeighbours(neighbours: Neighbours): void {
+        this.neighbours = neighbours;
+    }
 }
 
 class Source extends Tile {

@@ -12,6 +12,7 @@ class DebugGenerator {
         }
 
         this.addSource(rows, size);
+        this.linkNeighbours(rows);
 
         return new Board(rows);
     }
@@ -25,4 +26,19 @@ class DebugGenerator {
         const y: number = Math.floor(Math.random() * size);
         rows[x][y] = new Source();
     }
+
+    private static linkNeighbours(rows: Array<Array<Tile>>): void {
+        const height: number = rows.length;
+        const width: number = rows[0].length;
+
+        for (let i: number = 0; i < height; i++) {
+            const row: Array<Tile> = rows[i];
+            for (let j: number = 0; j < width; j++) {
+                const tile: Tile = row[j];
+                const neighbours: Neighbours = new Neighbours(rows, i, j);
+                tile.setNeighbours(neighbours);
+            }
+        }
+    }
+
 }
