@@ -22,9 +22,10 @@ class Tile {
     public connected: boolean = false;
     private neighbours: Neighbours;
 
-    public constructor(shape: Shape, rotation: Rotation) {
+    public constructor(shape: Shape, rotation: Rotation, neighbours?: Neighbours) {
         this.shape = shape;
         this.rotation = rotation;
+        this.neighbours = neighbours;
     }
 
     public rotated(clockwise: boolean = true): Tile {
@@ -32,7 +33,7 @@ class Tile {
         const idx: number = (this.rotation + delta) % EnumUtils.size(Rotation);
         const next: string = Rotation[idx];
 
-        return new Tile(this.shape, Rotation[next] as Rotation);
+        return new Tile(this.shape, Rotation[next] as Rotation, this.neighbours);
     }
 
     public setNeighbours(neighbours: Neighbours): void {
