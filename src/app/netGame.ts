@@ -33,8 +33,13 @@ class NetGame {
 
     private reset(renderer: Renderer, events: Events): void {
         this.board = this.buildBoard();
-        renderer.render(this.board);
+        this.updateAndDraw(renderer);
         events.setBoard(this.board);
+    }
+
+    private updateAndDraw(renderer: Renderer = this.renderer, board: Board = this.board): void {
+        board.flood();
+        renderer.render(board);
     }
 
     private buildBoard(): Board {
@@ -63,7 +68,7 @@ class NetGame {
 
     private readonly boardClick = (event: Event): void => {
         this.events.handleBoardClick(event);
-        this.renderer.render(this.board);
+        this.updateAndDraw(this.renderer);
     }
 
     private readonly registerFooterHandlers = (): void => {

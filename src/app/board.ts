@@ -50,7 +50,7 @@ class Source extends Tile {
     }
 
     public rotated = (clockwise: boolean = true): Source => {
-        const rotatedTile = super.rotated(clockwise);
+        const rotatedTile: Tile = super.rotated(clockwise);
 
         return new Source(rotatedTile.shape, rotatedTile.rotation, rotatedTile.neighbours);
     }
@@ -63,7 +63,7 @@ class Board {
     public readonly width: number;
     public readonly board: Array<Array<Tile>>;
 
-    private source: Source;
+    private readonly source: Source;
 
     public constructor(rows: Array<Array<Tile>> = [], source: Source) {
         if (rows.length === 0 || rows[0].length === 0) {
