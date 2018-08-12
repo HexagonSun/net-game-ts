@@ -15,7 +15,8 @@ class Neighbours {
     }
 
     public getAll(): Array<Tile> {
-        return [ this.north, this.east, this.south, this.west ];
+        return [ this.north, this.east, this.south, this.west ]
+            .filter((t: Tile) => t !== undefined);
     }
 
     private readonly getNorth = (rows: Array<Array<Tile>>, i: number, j: number): Tile => {
