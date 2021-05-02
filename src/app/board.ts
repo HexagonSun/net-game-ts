@@ -75,6 +75,11 @@ class Board {
         this.source = source;
     }
 
+    // tslint:disable-next-line:prefer-function-over-method
+    public flood(): void {
+        // TODO: implement flooding
+    }
+
     public rotate(x: number, y: number, clockwise: boolean): void {
         this.board[x][y] = this.board[x][y].rotated(clockwise);
     }
