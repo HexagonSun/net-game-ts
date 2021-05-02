@@ -7,13 +7,11 @@ class Events {
     }
 
     public handleBoardClick(event: Event): boolean {
-        const source: Element = event.srcElement;
-        if (source.tagName !== "IMG" || !(event instanceof MouseEvent)) {
-            return true;
-        }
+        const target: EventTarget = event.target;
+        if (!(event instanceof MouseEvent) || !(target instanceof HTMLImageElement)) { return false; }
 
         const me: MouseEvent = event;
-        const tileElement: HTMLElement = source.parentElement;
+        const tileElement: HTMLElement = target.parentElement;
         const x: string = tileElement.getAttribute("data-x");
         const y: string = tileElement.getAttribute("data-y");
 
