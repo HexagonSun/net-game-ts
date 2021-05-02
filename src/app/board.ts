@@ -75,7 +75,7 @@ class Board {
         this.source = source;
     }
 
-    // tslint:disable-next-line:prefer-function-over-method
+    // eslint-disable-next-line class-methods-use-this
     public flood(): void {
         // TODO: implement flooding
     }
